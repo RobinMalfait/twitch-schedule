@@ -6,6 +6,10 @@ interface Schedule {
   online: boolean
 }
 
+function classNames(...classes: (string | undefined | null | false)[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
 export default function Home() {
   let myTimezone = 'Europe/Brussels'
   let yourTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -29,9 +33,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gray-600 mix-blend-multiply" aria-hidden="true" />
       </div>
-      <div className="text-white shadow-2xl bg-gray-800 rounded-lg relative bg-opacity-75 backdrop-filter backdrop-blur-sm">
+      <div className="text-white shadow-2xl bg-gray-800 rounded-lg relative bg-opacity-75 backdrop-filter backdrop-blur">
         <div className="flex justify-between items-center w-full space-x-12 px-12 py-8">
-          <div className="rounded-lg shadow flex-shrink-0 overflow-hidden bg-white">
+          <div className="rounded shadow flex-shrink-0 overflow-hidden bg-white">
             <img className="w-24 h-24" alt="My face" src="https://github.com/RobinMalfait.png" />
           </div>
           <div>
@@ -56,15 +60,31 @@ export default function Home() {
                 {schedule.map((info) => {
                   return (
                     <tr key={info.date.toISOString()}>
-                      <td className="text-left px-4 py-1">
-                        <div className="border-l-4 border-blue-900 bg-gray-900 text-blue-200 text-opacity-75 font-semibold py-2 text-center tabular-nums transform -skew-x-6 shadow">
+                      <td className="text-left px-4 py-1 w-64">
+                        <div
+                          title={info.online ? 'Online' : 'Offline'}
+                          className={classNames(
+                            'border-l-4 bg-gray-900 font-semibold py-2 text-center tabular-nums transform -skew-x-6 shadow',
+                            info.online
+                              ? 'border-blue-900 text-blue-200 text-opacity-75'
+                              : 'border-gray-700 text-gray-500 text-opacity-50'
+                          )}
+                        >
                           {format(utcToZonedTime(info.date, myTimezone), 'E p', {
                             timeZone: myTimezone,
                           })}
                         </div>
                       </td>
-                      <td className="text-left px-4 py-1">
-                        <div className="border-l-4 border-blue-900 bg-gray-900 text-blue-200 text-opacity-75 font-semibold py-2 text-center tabular-nums transform -skew-x-6 shadow">
+                      <td className="text-left px-4 py-1 w-64">
+                        <div
+                          title={info.online ? 'Online' : 'Offline'}
+                          className={classNames(
+                            'border-l-4 bg-gray-900 font-semibold py-2 text-center tabular-nums transform -skew-x-6 shadow',
+                            info.online
+                              ? 'border-blue-900 text-blue-200 text-opacity-75'
+                              : 'border-gray-700 text-gray-500 text-opacity-50'
+                          )}
+                        >
                           {format(utcToZonedTime(info.date, yourTimezone), 'E p', {
                             timeZone: yourTimezone,
                           })}
