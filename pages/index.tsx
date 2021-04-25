@@ -34,8 +34,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-gray-600 mix-blend-multiply" aria-hidden="true" />
       </div>
       <div className="text-white shadow-2xl bg-gray-800 rounded-lg relative bg-opacity-75 backdrop-filter backdrop-blur">
-        <div className="flex justify-between items-center w-full space-x-12 px-12 py-8">
-          <div className="rounded shadow flex-shrink-0 overflow-hidden bg-white">
+        <div className="flex justify-between items-center w-full md:space-x-12 px-12 py-8">
+          <div className="hidden md:block rounded shadow flex-shrink-0 overflow-hidden bg-white">
             <img className="w-24 h-24" alt="My face" src="https://github.com/RobinMalfait.png" />
           </div>
           <div>
@@ -44,14 +44,14 @@ export default function Home() {
                 <tr>
                   <th className="text-center px-4 pt-2 pb-4">
                     <div className="flex flex-col text-left text-2xl">
-                      <span>Robin's Timezone</span>
-                      <span className="text-lg font-normal text-gray-300">{myTimezone}</span>
-                    </div>
-                  </th>
-                  <th className="text-center px-4 pt-2 pb-4">
-                    <div className="flex flex-col text-left text-2xl">
                       <span>Your Timezone</span>
                       <span className="text-lg font-normal text-gray-300">{yourTimezone}</span>
+                    </div>
+                  </th>
+                  <th className="hidden md:table-cell text-center px-4 pt-2 pb-4">
+                    <div className="flex flex-col text-left text-2xl">
+                      <span>Robin's Timezone</span>
+                      <span className="text-lg font-normal text-gray-300">{myTimezone}</span>
                     </div>
                   </th>
                 </tr>
@@ -70,12 +70,12 @@ export default function Home() {
                               : 'border-gray-700 text-gray-500 text-opacity-50'
                           )}
                         >
-                          {format(utcToZonedTime(info.date, myTimezone), 'E p', {
-                            timeZone: myTimezone,
+                          {format(utcToZonedTime(info.date, yourTimezone), 'E p', {
+                            timeZone: yourTimezone,
                           })}
                         </div>
                       </td>
-                      <td className="text-left px-4 py-1 w-64">
+                      <td className="hidden md:table-cell text-left px-4 py-1 w-64">
                         <div
                           title={info.online ? 'Online' : 'Offline'}
                           className={classNames(
@@ -85,8 +85,8 @@ export default function Home() {
                               : 'border-gray-700 text-gray-500 text-opacity-50'
                           )}
                         >
-                          {format(utcToZonedTime(info.date, yourTimezone), 'E p', {
-                            timeZone: yourTimezone,
+                          {format(utcToZonedTime(info.date, myTimezone), 'E p', {
+                            timeZone: myTimezone,
                           })}
                         </div>
                       </td>
