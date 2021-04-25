@@ -1,1 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer base {
+  html,
+  body {
+    @apply antialiased text-gray-900 font-sans dark:bg-gray-400;
+  }
+}
