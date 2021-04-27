@@ -14,13 +14,13 @@ export default function Home() {
   let myTimezone = 'Europe/Brussels'
   let yourTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 
-  let nowInMyTimezone = zonedTimeToUtc(new Date(2021, 3, 25, 19, 30, 0, 0), myTimezone)
+  let nowInMyTimezone = zonedTimeToUtc(new Date(2021, 3, 27, 21, 30, 0, 0), myTimezone)
 
   let schedule: Schedule[] = [
     { date: nowInMyTimezone, online: true },
-    { date: addDays(nowInMyTimezone, 1), online: true },
-    { date: addDays(nowInMyTimezone, 2), online: false },
-    { date: addDays(nowInMyTimezone, 3), online: true },
+    // { date: addDays(nowInMyTimezone, 1), online: true },
+    // { date: addDays(nowInMyTimezone, 2), online: false },
+    // { date: addDays(nowInMyTimezone, 3), online: true },
   ]
 
   return (
@@ -98,6 +98,11 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="mt-12">
+            <a className="text-blue-200 text-sm" href="https://twitch.tv/RobinMalfait">
+              twitch.tv/RobinMalfait
+            </a>
           </div>
         </div>
       </div>
