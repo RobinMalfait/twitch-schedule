@@ -14,7 +14,7 @@ export default function Home() {
   let myTimezone = 'Europe/Brussels'
   let yourTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 
-  let nowInMyTimezone = zonedTimeToUtc(new Date(2021, 4, 5, 19, 30, 0, 0), myTimezone)
+  let nowInMyTimezone = zonedTimeToUtc(new Date(2021, 4, 15, 15, 30, 0, 0), myTimezone)
 
   let schedule: Schedule[] = [
     { date: nowInMyTimezone, online: true },
